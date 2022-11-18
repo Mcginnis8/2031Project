@@ -28,7 +28,7 @@ ARCHITECTURE gen OF TONE_GEN IS
 
 	SIGNAL phase_register : STD_LOGIC_VECTOR(14 DOWNTO 0);
 	SIGNAL tuning_word    : STD_LOGIC_VECTOR(14 DOWNTO 0);
-	SIGNAL sounddata      : STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIGNAL sounddata      : STD_LOGIC_VECTOR(8 DOWNTO 0);
 	
 BEGIN
 
@@ -36,7 +36,7 @@ BEGIN
 	SOUND_LUT : altsyncram 
 	GENERIC MAP (
 		lpm_type => "altsyncram",
-		width_a => 10,
+		width_a => 9, -- minimize this, 9 bits for 512
 		widthad_a => 10,
 		numwords_a => 1024,
 		init_file => "SOUND_SINE.mif",
@@ -56,14 +56,14 @@ BEGIN
 	
 	-- 8-bit sound data is used as bits 12-5 of the 16-bit output.
 	-- This is to prevent the output from being too loud.
-	L_DATA(15 DOWNTO 13) <= sounddata(7)&sounddata(7)&sounddata(7); -- sign extend
-	L_DATA(12 DOWNTO 3) <= sounddata;
-	L_DATA(2 DOWNTO 0) <= "000"; -- pad right side with 0s
+	L_DATA(15 DOWNTO 13) <= sounddata(8)&sounddata(8)&sounddata(8); -- sign extend
+	L_DATA(12 DOWNTO 4) <= sounddata;
+	L_DATA(3 DOWNTO 0) <= "0000"; -- pad right side with 0s
 	
 	-- Right channel is the same.
-	R_DATA(15 DOWNTO 13) <= sounddata(7)&sounddata(7)&sounddata(7); -- sign extend
-	R_DATA(12 DOWNTO 3) <= sounddata;
-	R_DATA(2 DOWNTO 0) <= "000"; -- pad right side with 0s
+	R_DATA(15 DOWNTO 13) <= sounddata(8)&sounddata(8)&sounddata(8); -- sign extend
+	R_DATA(12 DOWNTO 4) <= sounddata;
+	R_DATA(3 DOWNTO 0) <= "0000"; -- pad right side with 0s
 	
 	-- process to perform DDS
 	PROCESS(RESETN, SAMPLE_CLK) BEGIN
