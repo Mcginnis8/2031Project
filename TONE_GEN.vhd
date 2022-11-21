@@ -32,6 +32,7 @@ ARCHITECTURE gen OF TONE_GEN IS
 	TYPE channel_state IS (both, left_s, right_s, none);
 	SIGNAL channel_output	: channel_state;
 
+<<<<<<< HEAD
 	SIGNAL phase_register 	: STD_LOGIC_VECTOR(14 DOWNTO 0);
 	SIGNAL tuning_word    	: STD_LOGIC_VECTOR(14 DOWNTO 0);
 	SIGNAL sounddata      	: STD_LOGIC_VECTOR(8 DOWNTO 0);
@@ -40,6 +41,11 @@ ARCHITECTURE gen OF TONE_GEN IS
 	SIGNAL timer_en			: STD_LOGIC := '0';
 	SIGNAL equal				: STD_LOGIC := '0';
 	SIGNAL status				: STD_LOGIC_VECTOR(2 DOWNTO 0);
+=======
+	SIGNAL phase_register : STD_LOGIC_VECTOR(14 DOWNTO 0);
+	SIGNAL tuning_word    : STD_LOGIC_VECTOR(14 DOWNTO 0);
+	SIGNAL sounddata      : STD_LOGIC_VECTOR(8 DOWNTO 0);
+>>>>>>> 1b27bb73590758ed182b2ceacc2794b682395b0b
 	
 BEGIN
 
@@ -47,7 +53,11 @@ BEGIN
 	SOUND_LUT : altsyncram
 	GENERIC MAP (
 		lpm_type => "altsyncram",
+<<<<<<< HEAD
 		width_a => 9,
+=======
+		width_a => 9, -- minimize this, 9 bits for 512
+>>>>>>> 1b27bb73590758ed182b2ceacc2794b682395b0b
 		widthad_a => 10,
 		numwords_a => 1024,
 		init_file => "SOUND_SINE.mif",
@@ -65,6 +75,20 @@ BEGIN
 		q_a => sounddata -- output is amplitude
 	);
 	
+<<<<<<< HEAD
+=======
+	-- 8-bit sound data is used as bits 12-5 of the 16-bit output.
+	-- This is to prevent the output from being too loud.
+	L_DATA(15 DOWNTO 13) <= sounddata(8)&sounddata(8)&sounddata(8); -- sign extend
+	L_DATA(12 DOWNTO 4) <= sounddata;
+	L_DATA(3 DOWNTO 0) <= "0000"; -- pad right side with 0s
+	
+	-- Right channel is the same.
+	R_DATA(15 DOWNTO 13) <= sounddata(8)&sounddata(8)&sounddata(8); -- sign extend
+	R_DATA(12 DOWNTO 4) <= sounddata;
+	R_DATA(3 DOWNTO 0) <= "0000"; -- pad right side with 0s
+	
+>>>>>>> 1b27bb73590758ed182b2ceacc2794b682395b0b
 	-- process to perform DDS
 	PROCESS(RESETN, SAMPLE_CLK) BEGIN
 		IF RESETN = '0' THEN
@@ -89,6 +113,7 @@ BEGIN
 		END IF;
 		
 	END PROCESS;
+<<<<<<< HEAD
 	
 	PROCESS(DUR_SEL, CLK_10HZ) BEGIN
 		IF RISING_EDGE(DUR_SEL) THEN
@@ -129,3 +154,6 @@ BEGIN
 	R_DATA <= sounddata(8)&sounddata(8)&sounddata(8)&sounddata&"0000" WHEN (channel_output = right_s AND equal /= '1') or (channel_output = both AND equal /= '1') else "0000000000000000";
 	
 END gen;
+=======
+END gen;
+>>>>>>> 1b27bb73590758ed182b2ceacc2794b682395b0b
