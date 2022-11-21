@@ -15,28 +15,39 @@ USE ALTERA_MF.ALTERA_MF_COMPONENTS.ALL;
 ENTITY TONE_GEN IS 
 	PORT
 	(
-		CMD        : IN  STD_LOGIC_VECTOR(14 DOWNTO 0);
-		CS         : IN  STD_LOGIC;
-		SAMPLE_CLK : IN  STD_LOGIC;
-		RESETN     : IN  STD_LOGIC;
-		L_DATA     : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-		R_DATA     : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+		CMD        	: IN  STD_LOGIC_VECTOR(15 DOWNTO 0);
+		CS         	: IN  STD_LOGIC;
+		CHAN_SEL		: IN  STD_LOGIC;
+		SAMPLE_CLK 	: IN  STD_LOGIC;
+		RESETN     	: IN  STD_LOGIC;
+		CLK_10HZ		: IN  STD_LOGIC;
+		DUR_SEL		: IN  STD_LOGIC;
+		
+		L_DATA     	: OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+		R_DATA     	: OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
 	);
 END TONE_GEN;
 
 ARCHITECTURE gen OF TONE_GEN IS 
+	TYPE channel_state IS (both, left_s, right_s, none);
+	SIGNAL channel_output	: channel_state;
 
-	SIGNAL phase_register : STD_LOGIC_VECTOR(14 DOWNTO 0);
-	SIGNAL tuning_word    : STD_LOGIC_VECTOR(14 DOWNTO 0);
-	SIGNAL sounddata      : STD_LOGIC_VECTOR(9 DOWNTO 0);
+	SIGNAL phase_register 	: STD_LOGIC_VECTOR(14 DOWNTO 0);
+	SIGNAL tuning_word    	: STD_LOGIC_VECTOR(14 DOWNTO 0);
+	SIGNAL sounddata      	: STD_LOGIC_VECTOR(8 DOWNTO 0);
+	SIGNAL time_passed		: STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000";
+	SIGNAL time_to_stop	   : STD_LOGIC_VECTOR(15 DOWNTO 0);
+	SIGNAL timer_en			: STD_LOGIC := '0';
+	SIGNAL equal				: STD_LOGIC := '0';
+	SIGNAL status				: STD_LOGIC_VECTOR(2 DOWNTO 0);
 	
 BEGIN
 
 	-- ROM to hold the waveform
-	SOUND_LUT : altsyncram 
+	SOUND_LUT : altsyncram
 	GENERIC MAP (
 		lpm_type => "altsyncram",
-		width_a => 10,
+		width_a => 9,
 		widthad_a => 10,
 		numwords_a => 1024,
 		init_file => "SOUND_SINE.mif",
@@ -54,17 +65,6 @@ BEGIN
 		q_a => sounddata -- output is amplitude
 	);
 	
-	-- 8-bit sound data is used as bits 12-5 of the 16-bit output.
-	-- This is to prevent the output from being too loud.
-	L_DATA(15 DOWNTO 13) <= sounddata(7)&sounddata(7)&sounddata(7); -- sign extend
-	L_DATA(12 DOWNTO 3) <= sounddata;
-	L_DATA(2 DOWNTO 0) <= "000"; -- pad right side with 0s
-	
-	-- Right channel is the same.
-	R_DATA(15 DOWNTO 13) <= sounddata(7)&sounddata(7)&sounddata(7); -- sign extend
-	R_DATA(12 DOWNTO 3) <= sounddata;
-	R_DATA(2 DOWNTO 0) <= "000"; -- pad right side with 0s
-	
 	-- process to perform DDS
 	PROCESS(RESETN, SAMPLE_CLK) BEGIN
 		IF RESETN = '0' THEN
@@ -78,13 +78,54 @@ BEGIN
 			END IF;
 		END IF;
 	END PROCESS;
+	
 
 	-- process to latch command data from SCOMP
-	PROCESS(RESETN, CS) BEGIN
+	PROCESS(RESETN, CS, CHAN_SEL) BEGIN
 		IF RESETN = '0' THEN
 			tuning_word <= "000000000000000";
 		ELSIF RISING_EDGE(CS) THEN
 			tuning_word <= CMD(14 DOWNTO 0);
 		END IF;
+		
 	END PROCESS;
+	
+	PROCESS(DUR_SEL, CLK_10HZ) BEGIN
+		IF RISING_EDGE(DUR_SEL) THEN
+			timer_en <= '1';
+			time_to_stop <= CMD;
+		END IF;
+		
+		IF DUR_SEL = '1' THEN
+			time_passed <= "0000000000000000";
+		ELSIF RISING_EDGE(CLK_10HZ) THEN
+			time_passed <= time_passed + "0000000000000001";
+			IF time_passed >= time_to_stop AND timer_en = '1' THEN
+				equal <= '1';
+			ELSE
+				equal <= '0';
+			END IF;
+		END IF;
+	
+	END PROCESS;
+	
+	
+	PROCESS(CHAN_SEL) BEGIN
+		IF RISING_EDGE(CHAN_SEL) THEN
+			CASE CMD(1 DOWNTO 0) IS
+				WHEN "00" =>
+					channel_output <= none;
+				WHEN "01" =>
+					channel_output <= right_s;
+				WHEN "10" =>
+					channel_output <= left_s;
+				WHEN "11" =>
+					channel_output <= both;
+			END CASE;
+		END IF;
+	END PROCESS;
+	
+	L_DATA <= sounddata(8)&sounddata(8)&sounddata(8)&sounddata&"0000" WHEN (channel_output = left_s AND equal /= '1') or (channel_output = both AND equal /= '1') else "0000000000000000";
+	R_DATA <= sounddata(8)&sounddata(8)&sounddata(8)&sounddata&"0000" WHEN (channel_output = right_s AND equal /= '1') or (channel_output = both AND equal /= '1') else "0000000000000000";
+	
 END gen;
