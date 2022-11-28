@@ -1,7 +1,8 @@
 ; BeepTest.asm
 ; Sends the value from the switches to the
 ; tone generator peripheral once per second.
-LOADI 1000
+ORG 0
+LOADI 500
 OUT duration
 LOADI 2403
 OUT    Beep
@@ -13,9 +14,9 @@ LOADI 0
 OUT    Beep
 CALL    Delay
 
+LOADI 500
+OUT duration
 LOADI 2546
-OUT duration
-LOADI 2403
 OUT    Beep
 CALL    Delay
 
@@ -25,9 +26,9 @@ LOADI 0
 OUT    Beep
 CALL    Delay
 
-LOADI 3398
+LOADI 500
 OUT duration
-LOADI 2403
+LOADI 3398
 OUT    Beep
 CALL    Delay
 
