@@ -15,13 +15,14 @@ USE ALTERA_MF.ALTERA_MF_COMPONENTS.ALL;
 ENTITY TONE_GEN IS 
 	PORT
 	(
-		CMD        	: IN  STD_LOGIC_VECTOR(15 DOWNTO 0);
+		CMD        	: INOUT  STD_LOGIC_VECTOR(15 DOWNTO 0);
 		CS         	: IN  STD_LOGIC;
-		CHAN_SEL		: IN  STD_LOGIC;
-		SAMPLE_CLK 	: IN  STD_LOGIC;
+		CHAN_SEL		: IN  STD_LOGIC; -- IO address selection to toggle left and right channels
+		SAMPLE_CLK 	: IN  STD_LOGIC; 
 		RESETN     	: IN  STD_LOGIC;
-		CLK_10HZ		: IN  STD_LOGIC;
-		DUR_SEL		: IN  STD_LOGIC;
+		CLK_100HZ	: IN  STD_LOGIC; -- clock for duration control allows for duration of 10 milliseconds
+		DUR_SEL		: IN  STD_LOGIC; -- IO address selection to enable note duration control
+		IO_WRITE		: IN  STD_LOGIC; -- signal from SCOMP to interact with added functionality addresses
 		
 		L_DATA     	: OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
 		R_DATA     	: OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
@@ -35,7 +36,7 @@ ARCHITECTURE gen OF TONE_GEN IS
 	SIGNAL phase_register 	: STD_LOGIC_VECTOR(14 DOWNTO 0);
 	SIGNAL tuning_word    	: STD_LOGIC_VECTOR(14 DOWNTO 0);
 	SIGNAL sounddata      	: STD_LOGIC_VECTOR(8 DOWNTO 0);
-	SIGNAL time_passed		: STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000";
+	SIGNAL time_passed		: STD_LOGIC_VECTOR(15 DOWNTO 0) := "0000000000000000"; -- data 
 	SIGNAL time_to_stop	   : STD_LOGIC_VECTOR(15 DOWNTO 0);
 	SIGNAL timer_en			: STD_LOGIC := '0';
 	SIGNAL equal				: STD_LOGIC := '0';
@@ -65,6 +66,8 @@ BEGIN
 		q_a => sounddata -- output is amplitude
 	);
 	
+	CMD <= "000000000000000" & equal WHEN ((DUR_SEL='1') AND (IO_WRITE='0')) ELSE "ZZZZZZZZZZZZZZZZ";
+	
 	-- process to perform DDS
 	PROCESS(RESETN, SAMPLE_CLK) BEGIN
 		IF RESETN = '0' THEN
@@ -90,16 +93,24 @@ BEGIN
 		
 	END PROCESS;
 	
-	PROCESS(DUR_SEL, CLK_10HZ) BEGIN
-		IF RISING_EDGE(DUR_SEL) THEN
+	PROCESS(RESETN, DUR_SEL, CLK_100HZ, CS) BEGIN
+	
+		IF RISING_EDGE(DUR_SEL) and IO_WRITE='1' THEN
 			timer_en <= '1';
 			time_to_stop <= CMD;
 		END IF;
 		
-		IF DUR_SEL = '1' THEN
+		IF DUR_SEL = '1' and IO_WRITE='1' THEN
 			time_passed <= "0000000000000000";
-		ELSIF RISING_EDGE(CLK_10HZ) THEN
-			time_passed <= time_passed + "0000000000000001";
+			equal <= '0';
+		ELSIF RISING_EDGE(CLK_100HZ) THEN
+			if (cs /= '1') THEN
+				time_passed <= time_passed + "0000000000000001";
+			ELSE
+				equal <= '0';
+				time_passed <= "0000000000000000";
+			END IF;
+			
 			IF time_passed >= time_to_stop AND timer_en = '1' THEN
 				equal <= '1';
 			ELSE
