@@ -7,7 +7,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -17,7 +17,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -27,7 +27,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -37,7 +37,7 @@ OUT duration
 CALL    Delay
 LOADI  401
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -47,7 +47,7 @@ OUT duration
 CALL    Delay
 LOADI  450
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -57,7 +57,7 @@ OUT duration
 CALL    Delay
 LOADI  450
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -70,7 +70,7 @@ OUT    Beep
 LOADI 20
 OUT duration
 CALL    Delay
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -80,7 +80,7 @@ OUT duration
 CALL    Delay
 LOADI  674
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -90,7 +90,7 @@ OUT duration
 CALL    Delay
 LOADI  674
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -100,7 +100,7 @@ OUT duration
 CALL    Delay
 LOADI  601
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -110,7 +110,7 @@ OUT duration
 CALL    Delay
 LOADI  601
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -126,7 +126,7 @@ CALL    Delay
 LOADI 20
 OUT duration
 CALL    Delay
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -136,7 +136,7 @@ OUT duration
 CALL    Delay
 LOADI  401
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -146,7 +146,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -156,7 +156,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -166,7 +166,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -176,7 +176,7 @@ OUT duration
 CALL    Delay
 LOADI  401
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -186,7 +186,7 @@ OUT duration
 CALL    Delay
 LOADI  450
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -196,7 +196,7 @@ OUT duration
 CALL    Delay
 LOADI  450
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -209,7 +209,7 @@ OUT    Beep
 LOADI 20
 OUT duration
 CALL    Delay
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -219,7 +219,7 @@ OUT duration
 CALL    Delay
 LOADI  674
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -229,7 +229,7 @@ OUT duration
 CALL    Delay
 LOADI  674
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -239,7 +239,7 @@ OUT duration
 CALL    Delay
 LOADI  601
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -249,7 +249,7 @@ OUT duration
 CALL    Delay
 LOADI  601
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -265,7 +265,7 @@ CALL    Delay
 LOADI 20
 OUT duration
 CALL    Delay
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -275,7 +275,7 @@ OUT duration
 CALL    Delay
 LOADI  401
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -285,7 +285,7 @@ OUT duration
 CALL    Delay
 LOADI  401
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -295,7 +295,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -305,7 +305,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -315,7 +315,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -325,7 +325,7 @@ OUT duration
 CALL    Delay
 LOADI  401
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -335,7 +335,7 @@ OUT duration
 CALL    Delay
 LOADI  401
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -345,7 +345,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -355,7 +355,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -370,7 +370,7 @@ OUT duration
 CALL    Delay
 LOADI 01
 OUT    ChnSel
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -380,7 +380,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -390,7 +390,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -402,7 +402,7 @@ LOADI  535
 OUT    Beep
 LOADI 10
 OUT    ChnSel
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -412,7 +412,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -422,7 +422,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -434,7 +434,7 @@ LOADI  535
 OUT    Beep
 LOADI 01
 OUT    ChnSel
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -444,7 +444,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -454,7 +454,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -464,7 +464,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -474,7 +474,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -486,7 +486,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -496,7 +496,7 @@ OUT duration
 CALL    Delay
 LOADI  535
 OUT    Beep
-LOADI 5
+LOADI 1
 OUT duration
 CALL    Delay
 LOADI 0
@@ -504,6 +504,7 @@ OUT    Beep
 LOADI 11
 OUT    ChnSel
 JUMP 0
+
 
 
 
