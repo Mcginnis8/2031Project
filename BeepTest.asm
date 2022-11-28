@@ -1,33 +1,560 @@
 ; BeepTest.asm
 ; Sends the value from the switches to the
 ; tone generator peripheral once per second.
-
 ORG 0
-	LOADI 50
-	OUT Duration
-	; Get the switch values
-	IN     	Switches
-	; Send to the peripheral
-	OUT		Hex0
-	OUT 	chnSel
-	OUT    	Beep
-	; Delay for 1 second
-	;CALL   	Delay
-	; Do it again
-	;JUMP 0
-	JUMP END
-	
-; Subroutine to delay for 0.2 seconds.
-Delay:
-	OUT    Timer
-WaitingLoop:
-	IN     Timer
-	ADDI   -2
-	JNEG   WaitingLoop
+LOADI 500
+OUT duration
+LOADI 2403
+OUT    Beep
+CALL    Delay
+
+LOADI 100
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+
+LOADI 500
+OUT duration
+LOADI 2546
+OUT    Beep
+CALL    Delay
+
+LOADI 100
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+
+LOADI 500
+OUT duration
+LOADI 3398
+OUT    Beep
+CALL    Delay
+
+LOADI 100
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  401
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  450
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  450
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  401
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  674
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  674
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  601
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  601
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+CALL    Delay
+LOADI 20
+OUT duration
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  401
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  401
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  450
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  450
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  401
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  674
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  674
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  601
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  601
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+CALL    Delay
+LOADI 20
+OUT duration
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  401
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  401
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  401
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  401
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+CALL    Delay
+LOADI 01
+OUT    ChnSel
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 10
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 10
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 10
+OUT    ChnSel
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 10
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 10
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 01
+OUT    ChnSel
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 10
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 10
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 10
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 10
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 10
+OUT    ChnSel
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOADI  535
+OUT    Beep
+CALL    Delay
+LOADI 1
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+LOADI 11
+OUT    ChnSel
+JUMP 0
+
+
+
+
+
+
+
+delay:
+	IN Duration
+	JZERO delay
+
 	RETURN
-	
-END:
-	;JUMP END
+
+
+
 
 ; IO address constants
 Switches:  EQU 000
@@ -35,6 +562,8 @@ LEDs:      EQU 001
 Timer:     EQU 002
 Hex0:      EQU 004
 Hex1:      EQU 005
+OneSec:    EQU 010
+OneTenth:  EQU 001
 Left:	   DW  &B01
 Beep:      EQU &H40
 ChnSel:	   EQU &H41
