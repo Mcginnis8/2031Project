@@ -14,7 +14,6 @@ LOADI 0
 OUT    Beep
 CALL    Delay
 
-ORG 0
 LOADI 150
 OUT duration
 LOADI 75
@@ -27,7 +26,6 @@ LOADI 0
 OUT    Beep
 CALL    Delay
 
-ORG 0
 LOADI 150
 OUT duration
 LOADI 80
@@ -40,7 +38,6 @@ LOADI 0
 OUT    Beep
 CALL    Delay
 
-ORG 0
 LOADI 150
 OUT duration
 LOADI 2403
