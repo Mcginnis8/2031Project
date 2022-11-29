@@ -27,7 +27,7 @@ END TONE_GEN;
 ARCHITECTURE gen OF TONE_GEN IS 
 
 	SIGNAL phase_register     : STD_LOGIC_VECTOR(8 DOWNTO 0);
-	SIGNAL phase_register_fix : STD_LOGIC_VECTOR(6 DOWNTO 1);
+	SIGNAL phase_register_fix : STD_LOGIC_VECTOR(8 DOWNTO 0);
 	SIGNAL tuning_word        : STD_LOGIC_VECTOR(4 DOWNTO 0);
 	SIGNAL sounddata          : STD_LOGIC_VECTOR(7 DOWNTO 0);
 	SIGNAL sounddata_fix      : STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -56,26 +56,26 @@ BEGIN
 	--  	q_a => sounddata -- output is amplitude
 	--  );
 
-	--  SOUND_LUT_HALF : altsyncram
-	--  GENERIC MAP (
-	--  	lpm_type => "altsyncram",
-	--  	width_a => 8,
-	--  	widthad_a => 7,
-	--  	numwords_a => 128,
-	--  	init_file => "SOUND_SINE_HALF.mif",
-	--  	intended_device_family => "Cyclone II",
-	--  	lpm_hint => "ENABLE_RUNTIME_MOD=NO",
-	--  	operation_mode => "ROM",
-	--  	outdata_aclr_a => "NONE",
-	--  	outdata_reg_a => "UNREGISTERED",
-	--  	power_up_uninitialized => "FALSE"
-	--  )
-	--  PORT MAP (
-	--  	clock0 => NOT(SAMPLE_CLK),
-	--  	-- In this design, one bit of the phase register is a fractional bit
-	--  	address_a => phase_register(7 downto 1),
-	--  	q_a => sounddata -- output is amplitude
-	--  );
+	SOUND_LUT_HALF : altsyncram
+	GENERIC MAP (
+		lpm_type => "altsyncram",
+		width_a => 8,
+		widthad_a => 7,
+		numwords_a => 128,
+		init_file => "SOUND_SINE_HALF.mif",
+		intended_device_family => "Cyclone II",
+		lpm_hint => "ENABLE_RUNTIME_MOD=NO",
+		operation_mode => "ROM",
+		outdata_aclr_a => "NONE",
+		outdata_reg_a => "UNREGISTERED",
+		power_up_uninitialized => "FALSE"
+	)
+	PORT MAP (
+		clock0 => NOT(SAMPLE_CLK),
+		-- In this design, one bit of the phase register is a fractional bit
+		address_a => phase_register(7 downto 1),
+		q_a => sounddata -- output is amplitude
+	);
 
 	SOUND_LUT_QUAD : altsyncram
 	GENERIC MAP (
@@ -100,11 +100,11 @@ BEGIN
 	
 	PROCESS(phase_register(7 downto 1)) BEGIN
 		IF phase_register(6 downto 1) = "000000" THEN
-			phase_register_fix(6 downto 1) <= (others => phase_register(7));
+			phase_register_fix <= (others => phase_register(7));
 		ELSIF phase_register(7) = '0' THEN
-			phase_register_fix(6 downto 1) <= phase_register(6 downto 1);
+			phase_register_fix <= phase_register(6 downto 1);
 		ELSE
-			phase_register_fix(6 downto 1) <= NOT(phase_register(6 downto 1));
+			phase_register_fix <= NOT(phase_register(6 downto 1));
 		END IF;
 	END PROCESS;
 
