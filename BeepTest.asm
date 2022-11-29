@@ -1,352 +1,28 @@
 ; BeepTest.asm
-; Sends the value from the switches to the
-; tone generator peripheral once per second.
+; Demonstrates 2031 Project peripheral base and added functionality
+; Plays lowest & highest note within 1% error in 100 Hz - 5 kHz range
+; Demonstrates added functionality by playing a song
+
 ORG 0
 
+; Demonstrate extreme notes in 100 Hz - 5 kHz range
 
-LOADI 20
+; Play lowest note (103 Hz)
+LOADI 1000
 OUT duration
 LOADI 71
 OUT    Beep
 CALL    Delay
-LOADI 20
-OUT duration
-LOADI 75
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 80
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 84
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 89
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 95
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 100
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 106
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 113
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 119
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 126
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 134
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 142
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 150
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 159
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 169
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 179
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 189
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 200
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 212
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 225
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 238
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 253
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 268
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 284
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 300
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 318
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 337
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 357
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 378
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 401
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 425
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 450
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 477
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 505
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 535
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 567
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 601
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 636
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 674
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 714
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 757
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 802
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 850
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 900
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOADI 954
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD A
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD B
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD C
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD D
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD E
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD F
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD G
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD H
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD I
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD J
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD K
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD L
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD M
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD N
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD O
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD P
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD Q
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD R
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD S
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD T
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD U
-OUT    Beep
-CALL    Delay
-LOADI 20
-OUT duration
-LOAD V
+
+; Play highest note (4978 Hz)
+LOADI 1000
+OUT duration
+LOAD High
 OUT    Beep
 CALL    Delay
 
-
-
+; Demonstrate channel switching & duration control
+: Play Old McDonald Had A Farm 
 
 OLDMCD:
 LOADI 20
@@ -853,52 +529,16 @@ OUT    ChnSel
 JUMP OLDMCD
 
 
-
-
-
-
-
-
-delay:
+Delay:
 	IN Duration
 	JZERO delay
-
 	RETURN
 
-
-
-A: DW 1010
-B: DW 1070
-C: DW 1134
-D: DW 1201
-E: DW 1273
-F: DW 1349
-G: DW 1429
-H: DW 1514
-I: DW 1604
-J: DW 1699
-K: DW 1800
-L: DW 1907
-M: DW 2021
-N: DW 2141
-O: DW 2268
-P: DW 2403
-Q: DW 2546
-R: DW 2697
-S: DW 2858
-T: DW 3028
-U: DW 3208
-V: DW 3398
-
 ; IO address constants
-Switches:  EQU 000
-LEDs:      EQU 001
-Timer:     EQU 002
-Hex0:      EQU 004
-Hex1:      EQU 005
 OneSec:    EQU 010
 OneTenth:  EQU 001
 Left:	   DW  &B01
 Beep:      EQU &H40
 ChnSel:	   EQU &H41
 Duration:  EQU &H42
+High:      DW 3398 ; Highest note, uses DW to due to bit size constraints
