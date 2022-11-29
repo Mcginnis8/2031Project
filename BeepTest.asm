@@ -236,10 +236,114 @@ OUT    Beep
 CALL    Delay
 LOADI 20
 OUT duration
-LOADI 1010
+LOAD A
 OUT    Beep
 CALL    Delay
-
+LOADI 20
+OUT duration
+LOAD B
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD C
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD D
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD E
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD F
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD G
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD H
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD I
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD J
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD K
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD L
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD M
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD N
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD O
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD P
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD Q
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD R
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD S
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD T
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD U
+OUT    Beep
+CALL    Delay
+LOADI 20
+OUT duration
+LOAD V
+OUT    Beep
+CALL    Delay
 
 
 
@@ -763,6 +867,28 @@ delay:
 
 
 
+A: DW 1010
+B: DW 1070
+C: DW 1134
+D: DW 1201
+E: DW 1273
+F: DW 1349
+G: DW 1429
+H: DW 1514
+I: DW 1604
+J: DW 1699
+K: DW 1800
+L: DW 1907
+M: DW 2021
+N: DW 2141
+O: DW 2268
+P: DW 2403
+Q: DW 2546
+R: DW 2697
+S: DW 2858
+T: DW 3028
+U: DW 3208
+V: DW 3398
 
 ; IO address constants
 Switches:  EQU 000
