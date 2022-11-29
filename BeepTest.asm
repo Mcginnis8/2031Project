@@ -2,37 +2,76 @@
 ; Sends the value from the switches to the
 ; tone generator peripheral once per second.
 ORG 0
-LOADI 500
+LOADI 150
+OUT duration
+LOADI 70
+OUT    Beep
+CALL    Delay
+
+LOADI 50
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+
+ORG 0
+LOADI 150
+OUT duration
+LOADI 75
+OUT    Beep
+CALL    Delay
+
+LOADI 50
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+
+ORG 0
+LOADI 150
+OUT duration
+LOADI 80
+OUT    Beep
+CALL    Delay
+
+LOADI 50
+OUT duration
+LOADI 0
+OUT    Beep
+CALL    Delay
+
+ORG 0
+LOADI 150
 OUT duration
 LOADI 2403
 OUT    Beep
 CALL    Delay
 
-LOADI 100
+LOADI 50
 OUT duration
 LOADI 0
 OUT    Beep
 CALL    Delay
 
-LOADI 500
+LOADI 150
 OUT duration
 LOADI 2546
 OUT    Beep
 CALL    Delay
 
-LOADI 100
+LOADI 50
 OUT duration
 LOADI 0
 OUT    Beep
 CALL    Delay
 
-LOADI 500
+LOADI 150
 OUT duration
 LOADI 3398
 OUT    Beep
 CALL    Delay
 
-LOADI 100
+LOADI 50
 OUT duration
 LOADI 0
 OUT    Beep
