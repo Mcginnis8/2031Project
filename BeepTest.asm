@@ -74,6 +74,7 @@ LOADI 0
 OUT    Beep
 CALL    Delay
 
+OLDMCD:
 LOADI 20
 OUT duration
 LOADI  535
@@ -342,7 +343,7 @@ OUT duration
 LOADI 0
 OUT    Beep
 CALL    Delay
-LOADI 20
+LOADI 10
 OUT duration
 LOADI  401
 OUT    Beep
@@ -352,7 +353,7 @@ OUT duration
 LOADI 0
 OUT    Beep
 CALL    Delay
-LOADI 20
+LOADI 10
 OUT duration
 LOADI  401
 OUT    Beep
@@ -392,7 +393,7 @@ OUT duration
 LOADI 0
 OUT    Beep
 CALL    Delay
-LOADI 20
+LOADI 10
 OUT duration
 LOADI  401
 OUT    Beep
@@ -402,7 +403,7 @@ OUT duration
 LOADI 0
 OUT    Beep
 CALL    Delay
-LOADI 20
+LOADI 10
 OUT duration
 LOADI  401
 OUT    Beep
@@ -575,7 +576,8 @@ OUT    Beep
 CALL    Delay
 LOADI 11
 OUT    ChnSel
-JUMP 0
+JUMP OLDMCD
+
 
 
 
