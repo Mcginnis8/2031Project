@@ -12,14 +12,14 @@ LOADI &b10
 OUT    ChnSel
 LOADI 1000
 OUT duration
-LOADI 71
+LOADI 71; 103/1.46 = 71
 OUT    Beep
 CALL    Delay
 
 ; Play 4978 Hz to both speakers for 10s
 LOADI &b11
 OUT    ChnSel
-LOADI 1000
+LOADI 1000; 4978/1.46 = 1000
 OUT duration
 LOAD High
 OUT    Beep
