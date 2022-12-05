@@ -7,14 +7,18 @@ ORG 0
 
 ; Demonstrate extreme notes in 100 Hz - 5 kHz range
 
-; Play lowest note (103 Hz)
+; Play lowest note to the left speaker for 10 Seconds (103 Hz)
+LOADI &b10
+OUT    ChnSel
 LOADI 1000
 OUT duration
 LOADI 71
 OUT    Beep
 CALL    Delay
 
-; Play highest note (4978 Hz)
+; Play highest note to both speakers for 10 Seconds (4978 Hz)
+LOADI &b11
+OUT    ChnSel
 LOADI 1000
 OUT duration
 LOAD High
@@ -502,6 +506,7 @@ OUT duration
 LOADI 0
 OUT    Beep
 CALL    Delay
+
 LOADI 10
 OUT    ChnSel
 LOADI 20
